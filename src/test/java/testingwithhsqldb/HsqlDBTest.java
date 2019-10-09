@@ -62,6 +62,14 @@ public class HsqlDBTest {
 		String name = myObject.nameOfCustomer(-1);
 		assertNull("name should be null, customer does not exist !", name);
 	}
+        
+        @Test
+        public void ajouterProduit() throws Exception {
+            ProduitEntity nouveau = new ProduitEntity(50, "Un nom de prod", 10.5f);
+		myObject.insertProduct(nouveau);
+		// On vérifie qu'on peut le retrouver
+		assertEquals(nouveau, myObject.productWithCode(50));
+        }
 
 	public static DataSource getDataSource() {
 		org.hsqldb.jdbc.JDBCDataSource ds = new org.hsqldb.jdbc.JDBCDataSource();
