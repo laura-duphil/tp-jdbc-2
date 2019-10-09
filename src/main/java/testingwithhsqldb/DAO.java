@@ -46,9 +46,10 @@ public class DAO {
 		// Une requête SQL paramétrée
 		String sql = "INSERT INTO PRODUCT VALUES (?,?,?)";
 		try (   Connection connection = myDataSource.getConnection();
+                        //requête préparée : avec paramètre(s)
 			PreparedStatement stmt = connection.prepareStatement(sql)
                 ) {
-                        // Définir la valeur du paramètre
+                        // Définir la valeur des paramètres
                         //on récupère les valeurs
 			stmt.setInt(1, unProduit.getId());
                         stmt.setString(2, unProduit.getName());
